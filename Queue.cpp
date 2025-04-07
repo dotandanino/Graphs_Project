@@ -17,7 +17,7 @@ void Queue::enqueue(int vtxNUM){
         rear=rear->next;
     }
 }
-bool Queue::isEmpty(){
+bool Queue::isEmpty() const{
     return (front==nullptr);
 }
 int Queue::dequeue(){
@@ -29,7 +29,7 @@ int Queue::dequeue(){
     delete temp;
     return x;
 }
-int Queue::peek(){
+int Queue::peek() const{
     if(front==nullptr)
         throw std::underflow_error("you cant pop from empty queue");
     return(front->id);

@@ -20,8 +20,8 @@ $(TEST_TARGET): $(OBJS) $(TEST_OBJ)
 %.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 valgrind: $(TARGET) $(TEST_TARGET)
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TEST_TARGET)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET)
 test: $(TEST_TARGET)
 	./$(TEST_TARGET)
 clean:

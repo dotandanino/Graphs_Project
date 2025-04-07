@@ -18,7 +18,8 @@ UnionFind::~UnionFind()
     delete[] parent;
 }
 //check the parent untill i find somene that is the parent of himself
-int UnionFind::find(int num){
+
+int UnionFind::find(int num) const{
     if(num>=size || num<0){
         throw std::invalid_argument("there is no such number in the union");
     }

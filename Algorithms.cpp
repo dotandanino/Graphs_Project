@@ -3,7 +3,7 @@
 using namespace graph;
 // when i say inf i mean 2^31
 // all the changes i did in the titles are with defult values in the hpp and in use for testing
-Graph Algorithms::BFS(Graph& g,int src,int* d){
+Graph Algorithms::BFS(Graph& g,int src,int* d) const{
     const int size=g.getNumOfVertex();
     //check src is valid
     if(src<0 || src>=size){
@@ -54,7 +54,7 @@ Graph Algorithms::BFS(Graph& g,int src,int* d){
     return gr;
 }
 
-Graph Algorithms::DFS(Graph& g,int src,int *discovery,int * finish){
+Graph Algorithms::DFS(Graph& g,int src,int *discovery,int * finish) const{
     int size=g.getNumOfVertex();
     //check src is valid
     if(src<0 || src>=size){
@@ -102,7 +102,7 @@ Graph Algorithms::DFS(Graph& g,int src,int *discovery,int * finish){
     return gr;
 }
 
-void Algorithms::dfsVisit(Graph& g,const int v,int *time,int* colors,int* d,int* f,int* p){
+void Algorithms::dfsVisit(Graph& g,const int v,int *time,int* colors,int* d,int* f,int* p) const{
     //the dfsvisit psaudo code from algo1
     Node* adgents=g.getAdgencyList()[v];
     colors[v]=1;
@@ -121,7 +121,7 @@ void Algorithms::dfsVisit(Graph& g,const int v,int *time,int* colors,int* d,int*
     f[v]=*time;
 }
 
-Graph Algorithms::dijkstra(Graph& g,int src,int * d){
+Graph Algorithms::dijkstra(Graph& g,int src,int * d) const{
     int size=g.getNumOfVertex();
     //check src is valid
     if(src<0 || src>=size){
@@ -172,7 +172,7 @@ Graph Algorithms::dijkstra(Graph& g,int src,int * d){
     return dijGraph;
 }
 
-void Algorithms::relax(int u,int v,int w,int* d,int* p,MinHeap& minheap){
+void Algorithms::relax(int u,int v,int w,int* d,int* p,MinHeap& minheap) const{
     if(d[v]>d[u]+w){
         minheap.updatePriority(v,d[u]+w);
         p[v]=u;
@@ -180,7 +180,7 @@ void Algorithms::relax(int u,int v,int w,int* d,int* p,MinHeap& minheap){
     }
 }
 
-Graph Algorithms::kruskal(Graph& g){
+Graph Algorithms::kruskal(Graph& g) const{
     int n=g.getNumOfVertex();
     int* connection=new int[n];
     //check the graph is connected
@@ -240,7 +240,7 @@ Graph Algorithms::kruskal(Graph& g){
 // is used an array of weight and parent to check what is the shortest 
 //edge from vertex in T to vertex in V/T. and than connected the closest one
 //and union him
-Graph Algorithms::prim(Graph& g){
+Graph Algorithms::prim(Graph& g) const{
     int n=g.getNumOfVertex();
     //check the graph is connected
     int* connection=new int[n];

@@ -13,13 +13,13 @@ Graph::Graph(int num_of_vertex)
         this->adgencyList[i]=nullptr;
     }
 }
-int Graph::getNumOfVertex(){
+int Graph::getNumOfVertex() const{
     return numOfVertex;
 }
 Node** Graph::getAdgencyList(){
     return adgencyList;
 }
-int Graph::getNumOfEdge(){
+int Graph::getNumOfEdge() const{
     return numOfEdge;
 }
 Graph::~Graph()
@@ -151,7 +151,7 @@ void Graph::removeEdge(int v1,int v2){
         throw std::invalid_argument("the graph doesn't contain this edge");
     }
 }
-void Graph::print_graph(){
+void Graph::print_graph() const{
     if(adgencyList!=nullptr){
         for(int i=0;i<numOfVertex;i++){
             std::cout<<"vtx "<<i<<" -> ";

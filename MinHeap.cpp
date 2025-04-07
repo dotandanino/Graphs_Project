@@ -41,7 +41,7 @@ MinHeap::~MinHeap(){
     delete[] arr;
 }
 //אני הגדרתי ערימה ריקה בתור ערימה שאין בה אף תא שהוא קטן מ 2 בחזקת 31
-bool MinHeap::isEmpty(){
+bool MinHeap::isEmpty() const{
     for(int i=0;i<size;i++){
         if(this->arr[i]<INT_MAX){
             return false;

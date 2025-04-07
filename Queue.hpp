@@ -14,8 +14,8 @@ namespace graph{
         ~Queue();
         void enqueue(int vtxNUM);
         int dequeue();
-        int peek();
-        bool isEmpty();
+        int peek() const;
+        bool isEmpty() const;
     };
 }
 #endif

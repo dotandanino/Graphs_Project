@@ -13,7 +13,7 @@ namespace graph{
         MinHeap(int size);
         ~MinHeap();
         int extractMin();
-        bool isEmpty();
+        bool isEmpty() const;
         void updatePriority(int vertex,int priority);
     };
 }

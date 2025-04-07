@@ -33,7 +33,7 @@ int main() {
     gr.addEdge(2, 5, 40);
     gr.addEdge(3, 6, 30);
     gr.addEdge(2, 6, 7);
-    gr.addEdge(5, 7, 30);
+    gr.addEdge(5, 7, 20);
     gr.addEdge(5, 8, 40);
     gr.addEdge(0, 8, 50);
     gr.addEdge(7, 9, 50);

@@ -22,9 +22,9 @@ namespace graph{
             ~Graph();
             void addEdge(int src,int dest,int w=1);
             void removeEdge(int v1,int v2);
-            void print_graph();
-            int getNumOfVertex();
-            int getNumOfEdge();
+            void print_graph() const;
+            int getNumOfVertex() const;
+            int getNumOfEdge() const;
             Node** getAdgencyList();
             // void addOneWayEdge(int src,int dest,int w=1);
     };

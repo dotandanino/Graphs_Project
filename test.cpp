@@ -58,7 +58,7 @@ TEST_CASE("Min Heap"){
 
 
 TEST_CASE("Union Find"){
-    UnionFind uf(10);
+    UnionFind uf(8);
 
     int f1=uf.find(2);
     CHECK(f1==2);
