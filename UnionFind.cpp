@@ -1,6 +1,7 @@
 //dotandanino@gmail.com
 #include "UnionFind.hpp"
 using namespace graph;
+// build array with size = numOfVertex
 UnionFind::UnionFind(int numOfVertex)
 {
     if(numOfVertex<=0){
@@ -16,6 +17,7 @@ UnionFind::~UnionFind()
 {
     delete[] parent;
 }
+//check the parent untill i find somene that is the parent of himself
 int UnionFind::find(int num){
     if(num>=size || num<0){
         throw std::invalid_argument("there is no such number in the union");
@@ -25,6 +27,7 @@ int UnionFind::find(int num){
     }
     return num;
 }
+//union the 2 numbers
 void UnionFind::myUnion(int num1,int num2){
     if(num1>=size || num1<0 || num2>=size || num2<0){
         throw std::invalid_argument("there is no such number in the union");

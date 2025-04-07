@@ -3,7 +3,7 @@
 using namespace graph;
 Graph::Graph(int num_of_vertex)
 {
-    if(num_of_vertex<=0){
+    if(num_of_vertex<=0){// graph must have positive number of vertex
         throw std::invalid_argument("num of vertex must be positive number");
     }
     this->numOfVertex=num_of_vertex;
@@ -35,9 +35,11 @@ Graph::~Graph()
     delete[] adgencyList;
 }
 void Graph::addEdge(int src,int dest,int w){
+    // src and dest must be in the graph
     if(src>=numOfVertex || dest >=numOfVertex || src<0 || dest<0){
         throw std::out_of_range("the graph doesn't contain this vertex");
     }
+    //check if there is already edge from src to dest and if so update the weight
     Node* temp=adgencyList[src];
     bool flag=false;
     while(temp!=nullptr){
@@ -48,12 +50,14 @@ void Graph::addEdge(int src,int dest,int w){
         }
         temp=temp->next;
     }
+    //if there is no edge I create new one
     if(!flag){
         Node *n1 =new Node(dest,w);
         n1 -> next=adgencyList[src];
         adgencyList[src]=n1;
         numOfEdge++;
     }
+    //swap src,dest in the previous comments
     temp=adgencyList[dest];
     flag=false;
     while(temp!=nullptr){
@@ -71,28 +75,28 @@ void Graph::addEdge(int src,int dest,int w){
         numOfEdge++;
     }
 }
-
-void Graph::addOneWayEdge(int src,int dest,int w){
-    if(src>=numOfVertex || dest >=numOfVertex || src<0 || dest<0){
-        throw std::out_of_range("the graph doesn't contain this vertex");
-    }
-    Node* temp=adgencyList[src];
-    bool flag=false;
-    while(temp!=nullptr){
-        if(temp->id==dest){
-            flag=true;
-            temp->weight=w;
-            break;
-        }
-        temp=temp->next;
-    }
-    if(!flag){
-        Node *n1 =new Node(dest,w);
-        n1 -> next=adgencyList[src];
-        adgencyList[src]=n1;
-        numOfEdge++;
-    }
-}
+// function that i though will be relevant for the algorithms but than i understood the graph we return should also be undirected
+// void Graph::addOneWayEdge(int src,int dest,int w){
+//     if(src>=numOfVertex || dest >=numOfVertex || src<0 || dest<0){
+//         throw std::out_of_range("the graph doesn't contain this vertex");
+//     }
+//     Node* temp=adgencyList[src];
+//     bool flag=false;
+//     while(temp!=nullptr){
+//         if(temp->id==dest){
+//             flag=true;
+//             temp->weight=w;
+//             break;
+//         }
+//         temp=temp->next;
+//     }
+//     if(!flag){
+//         Node *n1 =new Node(dest,w);
+//         n1 -> next=adgencyList[src];
+//         adgencyList[src]=n1;
+//         numOfEdge++;
+//     }
+// }
 
 void Graph::removeEdge(int v1,int v2){
     int find=0;
@@ -101,6 +105,7 @@ void Graph::removeEdge(int v1,int v2){
     }
     Node* n=adgencyList[v1];
     Node* prev=nullptr;
+    //check if this edge from src to dest exists if so I delete her and else i throw exception
     while (n!=nullptr)
     {
         if(n->id==v2){
@@ -121,6 +126,7 @@ void Graph::removeEdge(int v1,int v2){
     if(find==0){
         throw std::invalid_argument("the graph doesn't contain this edge");
     }
+    //check if this edge from dest to src exists if so I delete her and else i throw exception
     find=0;
     n=adgencyList[v2];
     prev=nullptr;
@@ -148,18 +154,14 @@ void Graph::removeEdge(int v1,int v2){
 void Graph::print_graph(){
     if(adgencyList!=nullptr){
         for(int i=0;i<numOfVertex;i++){
-            std::cout<<"the edges of vertex number "<<i<<" are:"<<std::endl;
-            if(adgencyList[i]==nullptr){
-                std::cout<<"this vertex have no edges."<<std::endl;
+            std::cout<<"vtx "<<i<<" -> ";
+            Node *n=adgencyList[i];
+            while (n!=nullptr)
+            {
+                std::cout<<"("<<n->id<<" , "<<n->weight<<") -> ";
+                n=n->next;
             }
-            else{
-                Node *n=adgencyList[i];
-                while (n!=nullptr)
-                {
-                    std::cout<<"vertex number: "<<n->id<<" and the weight is: "<<n->weight<<std::endl;
-                    n=n->next;
-                }
-            }
+            std::cout<<"NULL"<<std::endl;
         }
     }
 }

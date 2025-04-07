@@ -26,7 +26,7 @@ namespace graph{
             int getNumOfVertex();
             int getNumOfEdge();
             Node** getAdgencyList();
-            void addOneWayEdge(int src,int dest,int w=1);
+            // void addOneWayEdge(int src,int dest,int w=1);
     };
 }
 #endif

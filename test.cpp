@@ -472,13 +472,19 @@ TEST_CASE("dijikstra"){
         d.addEdge(1,2,4);
         d.addEdge(2,3,1);
         d.addEdge(1,3,2);
-        Graph after=a.dijkstra(d,0);
+        int* distance=new int[4];
+        Graph after=a.dijkstra(d,0,distance);
+        CHECK(distance[0]==0);
+        CHECK(distance[1]==8);
+        CHECK(distance[2]==5);
+        CHECK(distance[3]==6);
         CHECK_NOTHROW(after.removeEdge(0,2));
         CHECK_NOTHROW(after.removeEdge(3,2));
         CHECK_NOTHROW(after.removeEdge(1,3));
         CHECK_THROWS_WITH(after.removeEdge(0,1),"the graph doesn't contain this edge");
         CHECK_THROWS_WITH(after.removeEdge(0,3),"the graph doesn't contain this edge");
         CHECK_THROWS_WITH(after.removeEdge(2,1),"the graph doesn't contain this edge");
+        delete[] distance;
     }    
     SUBCASE("Negative weight"){
         Graph d(4);
