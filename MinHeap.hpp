@@ -12,7 +12,7 @@ namespace graph{
     public:
         MinHeap(int size);
         ~MinHeap();
-        int extractMin();
+        int extractMin();//return the index of the minimal item
         bool isEmpty() const;
         void updatePriority(int vertex,int priority);
     };

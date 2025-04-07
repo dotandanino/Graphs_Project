@@ -37,6 +37,7 @@
     - Queue
     - UnionFind
     all this classes are in their hpp and cpp
+    all the functions are in the hpp files
 ### Data Structures:
     - MinHeap
     - Queue
